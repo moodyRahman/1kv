@@ -1,4 +1,8 @@
-<script>
+
+<script lang="ts">
+	import type { PageData } from "./$types";
+
+    export let data: PageData;
 
     let count = 0
 
@@ -7,7 +11,7 @@
     }
 
     $: {
-        console.log(count)
+        console.log(data.clips[1])
     }
 
 </script>
@@ -16,6 +20,9 @@
 <p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
 <p>{count}</p>
 <button on:click={click} >click me</button>
+<pre>
+    {JSON.stringify(data.clips, null, 2)}
+</pre>
 
 <style>
 
