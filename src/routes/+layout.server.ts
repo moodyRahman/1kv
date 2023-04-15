@@ -8,7 +8,11 @@ type Clip = {
 		description: string;
 		source_creation: string;
 		url: string;
+		tags0: string;
+		tags1: string;
+		player_class: string;
 	};
+	slug: string;
 };
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -28,7 +32,11 @@ const load = async (): Promise<{ clips: Clip[] }> => {
 	);
 
 	const data = await res.json();
-	clips.push(...data.data);
+	const slugger = data.data.map((x) => ({
+		...x,
+		slug: x.attributes.url.slice(x.attributes.url.lastIndexOf('/'), x.attributes.url.length - 4)
+	}));
+	clips.push(...slugger);
 	// if there are additional pages of data we need to query...
 	if (data.meta.pagination.pageCount > 1) {
 		const reqs = [...Array(data.meta.pagination.pageCount).keys()] // generate an array of length "remaining pages of data"
@@ -48,11 +56,17 @@ const load = async (): Promise<{ clips: Clip[] }> => {
 		const page_data = await Promise.all(reqs); // resolve all the promises
 		const page_json = await Promise.all(page_data.map((x) => x.json()));
 		page_json.forEach(async (x) => {
-			clips.push(...x.data);
+			clips.push(
+				...x.data.map((x) => ({
+					...x,
+					slug: x.attributes.url.slice(
+						x.attributes.url.lastIndexOf('/'),
+						x.attributes.url.length - 4
+					)
+				}))
+			);
 		});
 	}
-
-	console.log(clips.length);
 
 	return {
 		clips: clips
