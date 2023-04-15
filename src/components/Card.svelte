@@ -3,24 +3,31 @@
 
     export let title: string;
     export let desc:string;
-    export let url:string;
+    export let player_class:string;
+    export let slug:string
 
     const click = (e: MouseEvent|KeyboardEvent) => {
-        console.log(e)
-        goto(url.slice(url.lastIndexOf("/"), url.length-4))
+        goto(slug)
     }
 </script>
 
 <div class="card" on:click={click} on:keypress={click}>
 
-    <a href="{url.slice(url.lastIndexOf("/"), url.length-4)}">{title}</a> <br>
+    <p>{title}</p>
     {desc}<br>
+    {player_class}
 </div>
 
 <style>
     .card{
         margin:15px;
         padding: 15px;
-        width:50%;
+        width:30%;
+        cursor:pointer;
+        background-color: #34425c;
+        color: #cdcdc2;
+        border-radius: 10px;
     }
+
+
 </style>
