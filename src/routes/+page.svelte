@@ -6,8 +6,6 @@
 
     export let data: PageData;
 
-    console.log(base)
-
 </script>
 <div class="clip_container">
     {#each data.clips as clip}
@@ -17,7 +15,7 @@
     player_class={clip.attributes.player_class}
     slug={clip.slug}
     />
-    <a href={`./${clip.slug}`}>none</a>
+    <a href={clip.slug}>none</a>
     {/each}
 </div>
 

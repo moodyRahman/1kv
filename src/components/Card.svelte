@@ -7,7 +7,7 @@
     export let slug:string
 
     const click = (e: MouseEvent|KeyboardEvent) => {
-        goto(`${import.meta.env.BASE_URL}${slug}`)
+        goto(`${slug}`)
     }
 </script>
 
