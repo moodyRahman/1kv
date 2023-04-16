@@ -16,10 +16,13 @@ const config = {
 			fallback: null,
 			precompress: false,
 			strict: true,
-			base: "/1kv"
+			base: "/1kv/"
 		}),
 		prerender: {
 			entries: ["/a", "/"]
+		},
+		paths: {
+			base: '/1kv',
 		}
 	}
 };
