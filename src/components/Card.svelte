@@ -7,7 +7,7 @@
     export let slug:string
 
     const click = (e: MouseEvent|KeyboardEvent) => {
-        goto(slug)
+        goto(`./${slug}`)
     }
 </script>
 

@@ -17,7 +17,7 @@
     player_class={clip.attributes.player_class}
     slug={clip.slug}
     />
-    <a href={base}/{clip.slug}>none</a>
+    <a href={`./${clip.slug}`}>none</a>
     {/each}
 </div>
 
