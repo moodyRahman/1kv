@@ -16,7 +16,7 @@ type Clip = {
 };
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-const load = async (): Promise<{ clips: Clip[] }> => {
+const load = async ({ url }: { url: any }): Promise<{ clips: Clip[]; pathname: any }> => {
 	const clips = [];
 
 	// making the first query to the CMS
@@ -32,7 +32,7 @@ const load = async (): Promise<{ clips: Clip[] }> => {
 	);
 
 	const data = await res.json();
-	const slugger = data.data.map((x) => ({
+	const slugger = data.data.map((x: Clip) => ({
 		...x,
 		slug: x.attributes.url.slice(x.attributes.url.lastIndexOf('/'), x.attributes.url.length - 4)
 	}));
@@ -57,7 +57,7 @@ const load = async (): Promise<{ clips: Clip[] }> => {
 		const page_json = await Promise.all(page_data.map((x) => x.json()));
 		page_json.forEach(async (x) => {
 			clips.push(
-				...x.data.map((x) => ({
+				...x.data.map((x: Clip) => ({
 					...x,
 					slug: x.attributes.url.slice(
 						x.attributes.url.lastIndexOf('/'),
@@ -69,7 +69,8 @@ const load = async (): Promise<{ clips: Clip[] }> => {
 	}
 
 	return {
-		clips: clips
+		clips: clips,
+		pathname: url.pathname
 	};
 };
 
