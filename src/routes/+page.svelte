@@ -22,8 +22,10 @@
 <style>
 
 .clip_container {
+    width: 100%;
     display:flex;
     flex-flow: row wrap;
+    justify-content: space-around;
 }
 
 a{
