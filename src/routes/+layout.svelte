@@ -25,7 +25,7 @@
             padding-right: 100px;
             padding-top: 50px;
             padding-bottom: 50px;
-            background-color: #cdcdc2;
+            background-color: #ff5577;
     }
     @media screen and (max-width: 600px) {
         :global(body) {
