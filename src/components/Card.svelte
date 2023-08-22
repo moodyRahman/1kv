@@ -9,7 +9,6 @@
     const {slug} = clip_data
     const {title, description, source_creation} = clip_data.attributes
 
-    const date = dayjs(source_creation).format("YY/MM/DD HH:MM:ss");
     const click = (e: MouseEvent|KeyboardEvent) => {
         goto(`${slug}`)
     }
@@ -25,7 +24,7 @@
     </div>
 
     <b>
-        {date}
+        {dayjs(source_creation).format("MMM DD, YYYY hh:mm:ss A")}
     </b>
     
 
