@@ -1,25 +1,31 @@
 <script lang="ts">
 	import { goto } from "$app/navigation";
+	import dayjs from 'dayjs'
+    import type { Clip } from "../routes/+layout.server";
 
-    export let title: string;
-    export let desc:string;
-    export let player_class:string;
-    export let slug:string
+    export let clip_data: Clip;
 
     let active:boolean = false;
+    const {slug} = clip_data
+    const {title, description, source_creation} = clip_data.attributes
 
+    const date = dayjs(source_creation).format("YY/MM/DD HH:MM:ss");
     const click = (e: MouseEvent|KeyboardEvent) => {
         goto(`${slug}`)
     }
+
 </script>
 
 <div class="card" on:click={click} on:keypress={click}>
     <img alt="{slug}" src="https://moodyrahman.com/files/clips/clipart/{slug.substring(1, 6)}.png" />
+    
     <p class="title"><b>{title}</b></p>
+    {date}
+    
     <div class="desc">
-        {desc}
+        {description}
     </div>
-    {player_class}
+
 </div>
 
 <style>
@@ -30,6 +36,11 @@
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center;
+    }
+    
+    p {
+        margin: 0px;
+        padding: 0px;
     }
 
     .card{
@@ -46,7 +57,8 @@
     }
 
     .title {
-        margin-bottom: 15px;
+        margin-top: 8px;
+        margin-bottom: 8px;
     }
 
     @media screen and (max-width: 600px) {

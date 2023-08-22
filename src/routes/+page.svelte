@@ -10,10 +10,7 @@
 <div class="clip_container">
     {#each data.clips as clip}
     <Card 
-    title={clip.attributes.title} 
-    desc={clip.attributes.description} 
-    player_class={clip.attributes.player_class}
-    slug={clip.slug}
+    clip_data={clip}
     />
     <a href={clip.slug}>none</a>
     {/each}
