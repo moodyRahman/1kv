@@ -20,11 +20,14 @@
     <img alt="{slug}" src="https://moodyrahman.com/files/clips/clipart/{slug.substring(1, 6)}.png" />
     
     <p class="title"><b>{title}</b></p>
-    {date}
-    
     <div class="desc">
-        {description}
+        <i>{description}</i>
     </div>
+
+    <b>
+        {date}
+    </b>
+    
 
 </div>
 
@@ -58,7 +61,6 @@
 
     .title {
         margin-top: 8px;
-        margin-bottom: 8px;
     }
 
     @media screen and (max-width: 600px) {
