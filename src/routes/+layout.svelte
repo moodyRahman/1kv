@@ -1,22 +1,33 @@
 
 <script lang="ts">
     
-    import {scale} from "svelte/transition"
+    import {scale, fade, blur} from "svelte/transition"
 
     export let data;
 </script>
 
 
 {#key data.pathname }
-<div transition:scale>
-    <slot></slot>
+<div class="header">
+    <p>
+        <a href="/">one thousand voices</a>, a destiny 2 clip showcase, a moody rahman project
+    </p>
+    <p>
+        <a href="https://github.com/moodyRahman/1kv">source code</a>, <a href="./writeup">technical writeup</a>
+    </p>
 </div>
+
+    <slot></slot>
 {/key}
 
 <style>
     slot {
         margin: 100px;
         padding: 100px;
+    }
+
+    .header {
+        padding-left: 50px;
     }
 
     :global(body) {
@@ -32,6 +43,10 @@
             margin: 0;
             padding: 0;
             background-color: #cdcdc2;
+        }
+
+        .header {
+            padding-left: 5px;
         }
     }
     :global(html) {
