@@ -10,10 +10,10 @@
 {#key data.pathname }
 <div class="header">
     <p>
-        <a href="/">one thousand voices</a>, a destiny 2 clip showcase, a moody rahman project
+        <a href="/">one thousand voices</a> | a destiny 2 clip showcase
     </p>
     <p>
-        <a href="https://github.com/moodyRahman/1kv">source code</a>, <a href="./writeup">technical writeup</a>
+        <a href="https://github.com/moodyRahman/1kv">source code</a> | <a href="./writeup">technical writeup</a>
     </p>
 </div>
 
