@@ -18,6 +18,13 @@
 </div>
 
     <slot></slot>
+
+<div class="footer">
+    <p>
+        <a href="http://moodyrahman.com">a moody rahman project, 2023</a>
+    </p>
+</div>
+
 {/key}
 
 <style>
@@ -28,6 +35,10 @@
 
     .header {
         padding-left: 50px;
+    }
+    .footer {
+        display: flex;
+        justify-content: center;
     }
 
     :global(body) {
