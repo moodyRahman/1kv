@@ -16,7 +16,7 @@
 </script>
 
 <div class="card" on:click={click} on:keypress={click}>
-    <img alt="{slug}" src="https://moodyrahman.com/files/clips/clipart/{slug.substring(1, 6)}.png" />
+    <img loading="lazy" alt="{slug}" src="https://moodyrahman.com/files/clips/clipart/{slug.substring(1, 6)}.png" />
     
     <p class="title"><b>{title}</b></p>
     <div class="desc">
