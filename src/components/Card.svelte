@@ -5,9 +5,10 @@
 
     export let clip_data: Clip;
 
-    let active:boolean = false;
-    const {slug} = clip_data
-    const {title, description, source_creation} = clip_data.attributes
+
+    $: ({slug} = clip_data)
+
+    $: ({title, description, source_creation, tags0, tags1} = clip_data.attributes)
 
     const click = (e: MouseEvent|KeyboardEvent) => {
         goto(`${slug}`)
@@ -19,14 +20,20 @@
     <img loading="lazy" alt="{slug}" src="https://moodyrahman.com/files/clips/clipart/{slug.substring(1, 6)}.png" />
     
     <p class="title"><b>{title}</b></p>
+    <div>
+        <b>
+            {dayjs(source_creation).format("MMM DD YYYY, hh:mm:ss A")}
+        </b>
+    </div>
     <div class="desc">
         <i>{description}</i>
     </div>
 
-    <b>
-        {dayjs(source_creation).format("MMM DD, YYYY hh:mm:ss A")}
-    </b>
-    
+
+    <div>
+        {tags0!==null?tags0:""}{tags0 && tags1?", ":""}{tags1!==null?tags1:""}
+    </div>
+
 
 </div>
 

@@ -15,8 +15,13 @@ type Clip = {
 	slug: string;
 };
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const load = async ({ url }: { url: any }): Promise<{ clips: Clip[]; pathname: any }> => {
+const load = async ({
+	url
+}: {
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	url: any;
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+}): Promise<{ clips: Clip[]; pathname: any; tags: Set<string> }> => {
 	const clips = [];
 
 	// making the first query to the CMS
@@ -68,9 +73,17 @@ const load = async ({ url }: { url: any }): Promise<{ clips: Clip[]; pathname: a
 		});
 	}
 
+	const alltags = new Set<string>();
+
+	clips.forEach((x: Clip) => {
+		x.attributes.tags0 ? alltags.add(x.attributes.tags0) : '';
+		x.attributes.tags1 ? alltags.add(x.attributes.tags1) : '';
+	});
+
 	return {
 		clips: clips,
-		pathname: url.pathname
+		pathname: url.pathname,
+		tags: alltags
 	};
 };
 
