@@ -24,7 +24,7 @@
 
 
 <div class="tags">
-
+    filters: 
     {#each Array.from(data.tags.keys()) as value}     
     <button on:click={(e) => {updateActive(value)}} style="background-color:{active_tag==value?"black":""}; color:{active_tag==value?"#cdcdc2":""}">
         {value}
